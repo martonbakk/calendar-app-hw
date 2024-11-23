@@ -8,10 +8,9 @@ import java.time.LocalTime;
 public class App {
     public static void main(String[] args) {
         LocalDate localDate = LocalDate.now();
-        LocalTime localTime = LocalTime.now();
         fileName="./src/main/resources/Data/data.txt";
-        loadData();
-        CalendarFrame calendarFrame = new CalendarFrame(localDate, localTime);
+        loadData(localDate);
+        CalendarFrame calendarFrame = new CalendarFrame(localDate);
         calendarFrame.setVisible(true);
     }
 }

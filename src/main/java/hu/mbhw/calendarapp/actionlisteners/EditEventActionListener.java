@@ -74,7 +74,7 @@ public class EditEventActionListener implements ActionListener {
                 DataHandler.insertRecordIntoDatabase(eventToEdit);
                 monthView.updateEventList();
                 monthView.updateEventMatrix();
-                weekView.refreshWeekTable();
+                weekView.updateWeekTable();
                 // Bezárjuk az ablakot
                 JOptionPane.showMessageDialog(editFrame, "Event updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 editFrame.dispose();

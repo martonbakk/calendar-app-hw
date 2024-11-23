@@ -18,7 +18,7 @@ public class CurrentDayColumnRenderer extends DefaultTableCellRenderer {
 
         // Ellenőrizzük, hogy az aktuális nap oszlopában vagyunk-e
         if (column == currentDayColumn && !isSelected) {
-            cell.setBackground(Color.CYAN); // Az aktuális nap színe
+            cell.setBackground(Color.RED); // Az aktuális nap színe
         } else {
             cell.setBackground(Color.WHITE); // Egyéb cellák alapértelmezett színe
         }

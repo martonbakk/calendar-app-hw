@@ -29,7 +29,7 @@ public class DeleteEventActionListener implements ActionListener {
             DataHandler.deleteEventFromList(currentEvent);
             monthView.updateEventList();
             monthView.updateEventMatrix();
-            weekView.refreshWeekTable();
+            weekView.updateWeekTable();
             // Visszajelzés a felhasználónak
             JOptionPane.showMessageDialog(null, "Event deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
             popup.setVisible(false);

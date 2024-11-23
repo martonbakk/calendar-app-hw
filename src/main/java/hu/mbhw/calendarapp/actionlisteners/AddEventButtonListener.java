@@ -121,7 +121,7 @@ public class AddEventButtonListener implements ActionListener {
                 }
 
 
-                weekView.refreshWeekTable();
+                weekView.updateWeekTable();
                 monthView.updateEventMatrix();
                 monthView.updateEventList();
                 addEventDialog.setVisible(false);

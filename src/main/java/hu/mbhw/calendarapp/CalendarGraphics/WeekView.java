@@ -1,7 +1,10 @@
 package hu.mbhw.calendarapp.CalendarGraphics;
 
 import hu.mbhw.calendarapp.data.Event;
+import hu.mbhw.calendarapp.renderer.CurrentDayColumnRenderer;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import java.awt.*;
@@ -22,18 +25,16 @@ public class WeekView {
     private JScrollPane scrollPaneWeekTable;
     private DefaultTableModel weekTableModel;
     private LocalDate localDate;
-    private LocalTime localTime;
 
     public JTable getWeekTable(){
         return weekTable;
     }
 
-    public WeekView(LocalDate localDate, LocalTime localTime) {
+    public WeekView(LocalDate localDate) {
         String[] columnNames = {"TIME", "H", "K", "Sz", "Cs", "P", "Szo", "V"}; // Az oszlopok nevei
         String[][] weekMatrix = new String[24][8]; // A hét mátrix (nap, 2 órás intervallumok)
 
         this.localDate=localDate;
-        this.localTime=localTime;
 
         currentWeekStart = 1; // Az aktuális hét hétfője
         weekLabel = new JLabel(); // Címke a hét napjainak kijelzésére
@@ -70,16 +71,15 @@ public class WeekView {
     private void updateWeekLabel() {
         StringBuilder weekText = new StringBuilder("Heti napok: ");
         int tempDate = currentWeekStart;
-        for (int i = 0; i < 7; i++) {
+        for (int i = tempDate; i < currentWeekStart+7; i++) {
             if(tempDate<=30) {
                 weekText.append(tempDate).append(" ");
                 tempDate++;
             }else{
-            tempDate=1;
+                tempDate=1;
             }
         }
         weekLabel.setText(weekText.toString());
-
     }
 
 
@@ -87,10 +87,10 @@ public class WeekView {
     // Beállítja a navigációs gombokat
     private void setupNavigationButtons() {
         leftButton.addActionListener(e -> {
-            if(currentWeekStart>=8) {
+            if(currentWeekStart>7) {
                 currentWeekStart -=7; // Előző hét
                 updateWeekLabel(); // Frissítjük a címkét
-                refreshWeekTable(); // Frissítjük a táblázatot
+                updateWeekTable(); // Frissítjük a táblázatot
             }
         });
 
@@ -98,7 +98,7 @@ public class WeekView {
             if(currentWeekStart<29) {
                 currentWeekStart += 7; // Következő hét
                 updateWeekLabel(); // Frissítjük a címkét
-                refreshWeekTable(); // Frissítjük a táblázatot
+                updateWeekTable(); // Frissítjük a táblázatot
             }
         });
     }
@@ -134,18 +134,30 @@ public class WeekView {
     }
 
 
-
-
-
     // Frissíti a táblázat adatait
-    public void refreshWeekTable() {
+    public void updateWeekTable() {
         String[][] weekMatrix = new String[24][8];
         fillWeekMatrix(weekMatrix); // Mátrix újratöltése
+
+        System.out.println(currentWeekStart+"--- "+localDate.getDayOfMonth()+" ---"+(currentWeekStart+7));
 
         // A tábla modelljének frissítése
         weekTableModel.setDataVector(weekMatrix, new String[]{"TIME", "H", "K", "Sz", "Cs", "P", "Szo", "V"});
 
-        // Ha szükséges, újrarendereljük a táblázatot
+        if(currentWeekStart <= localDate.getDayOfMonth() && localDate.getDayOfMonth() < (currentWeekStart + 7)){
+            int currentDayColumn = localDate.getDayOfMonth()%7;
+            for (int i = 1; i <= 7; i++) { // Csak a napokat reprezentáló oszlopokra alkalmazzuk
+                if (i == currentDayColumn) {
+                    weekTable.getColumnModel().getColumn(i).setCellRenderer(new CurrentDayColumnRenderer(i));
+                } else {
+                    weekTable.getColumnModel().getColumn(i).setCellRenderer(new DefaultTableCellRenderer());
+                }
+            }
+        }else{
+            for (int i = 1; i <= 7; i++) { // Csak a napokat reprezentáló oszlopokra alkalmazzuk
+                weekTable.getColumnModel().getColumn(i).setCellRenderer(new DefaultTableCellRenderer());
+            }
+        }
         weekTable.revalidate();
         weekTable.repaint();
     }

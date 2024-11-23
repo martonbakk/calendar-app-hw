@@ -37,6 +37,6 @@ public class ComboBoxActionListener implements ActionListener {
         }
         monthView.updateEventMatrix();
         monthView.updateEventList();
-        weekView.refreshWeekTable();
+        weekView.updateWeekTable();
     }
 }

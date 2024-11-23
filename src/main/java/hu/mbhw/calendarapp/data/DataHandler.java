@@ -1,6 +1,8 @@
 package hu.mbhw.calendarapp.data;
 
 import java.io.*;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,12 +11,14 @@ public class DataHandler {
     private static List<Event> currentlyDisplayedEvents=new ArrayList<>(); ;
     public static String fileName;
 
-    public static void loadData(){
+    public static void loadData(LocalDate localDate){
         data = readEventsFromFile();
         for (Event event : data) {
             System.out.println(event.name);
         }
-        filterEventList("January", "Home");
+        Month monthEnum= localDate.getMonth();
+        filterEventList(monthEnum.toString().charAt(0) +
+                monthEnum.toString().substring(1).toLowerCase(), "Home");
 
     }
 

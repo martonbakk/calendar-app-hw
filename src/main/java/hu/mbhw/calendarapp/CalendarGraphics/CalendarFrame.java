@@ -19,7 +19,7 @@ public class CalendarFrame extends JFrame {
 
     public static Enums.CALENDARFRAME_VIEW currentView = Enums.CALENDARFRAME_VIEW.MONTH;
 
-    public CalendarFrame(LocalDate localDate, LocalTime localTime) {
+    public CalendarFrame(LocalDate localDate) {
         setTitle("Calendar");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 600, 330);
@@ -30,7 +30,7 @@ public class CalendarFrame extends JFrame {
 
         // Initialize views
         monthView = new MonthView(localDate);
-        weekView = new WeekView(localDate, localTime);
+        weekView = new WeekView(localDate);
 
         // Lower panel setup
         lowPanel = new JPanel(new BorderLayout());
@@ -81,7 +81,7 @@ public class CalendarFrame extends JFrame {
             currentView = Enums.CALENDARFRAME_VIEW.WEEK;
             // Switch to Week View
             currentLowPanel = new JPanel();
-            weekView.refreshWeekTable();
+            weekView.updateWeekTable();
             currentLowPanel.add(weekView.getPanel(), BorderLayout.CENTER);
         } else {
             currentView = Enums.CALENDARFRAME_VIEW.MONTH;
