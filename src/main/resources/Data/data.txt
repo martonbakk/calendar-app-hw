@@ -86,3 +86,5 @@ Open Mic Night, Other, March, 23, 19, 21, Cafe, Sharing talents at a local cafe.
 Dinner Cruise, Home, April, 20, 17, 19, Boat, Evening on the water with food and music.;
 Brainstorming Session, Work, May, 9, 12, 14, Office, Team discussion on upcoming projects.;
 Reading Club, Other, January, 31, 19, 21, Community Library, Discussing books at the community library.;
+Teszt2, Home, January, 2, 13, 14, ads, teszt;
+asd, Home, January, 12, 13, 14, asd, asd;

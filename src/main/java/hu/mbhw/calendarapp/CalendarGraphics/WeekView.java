@@ -5,6 +5,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import java.awt.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import static hu.mbhw.calendarapp.data.DataHandler.getCurrentlyDisplayedEvents;
@@ -19,14 +21,19 @@ public class WeekView {
     private JTable weekTable; // A táblázat az eseményekkel
     private JScrollPane scrollPaneWeekTable;
     private DefaultTableModel weekTableModel;
+    private LocalDate localDate;
+    private LocalTime localTime;
 
     public JTable getWeekTable(){
         return weekTable;
     }
 
-    public WeekView() {
+    public WeekView(LocalDate localDate, LocalTime localTime) {
         String[] columnNames = {"TIME", "H", "K", "Sz", "Cs", "P", "Szo", "V"}; // Az oszlopok nevei
         String[][] weekMatrix = new String[24][8]; // A hét mátrix (nap, 2 órás intervallumok)
+
+        this.localDate=localDate;
+        this.localTime=localTime;
 
         currentWeekStart = 1; // Az aktuális hét hétfője
         weekLabel = new JLabel(); // Címke a hét napjainak kijelzésére

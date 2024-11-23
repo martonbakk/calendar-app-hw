@@ -13,11 +13,13 @@ public class DeleteEventActionListener implements ActionListener {
     private  Event currentEvent;
     private  MonthView monthView;
     private  WeekView weekView;
+    private JFrame popup;
 
-    public DeleteEventActionListener(Event eventDetails, MonthView monthViewTable, WeekView weekViewTable) {
+    public DeleteEventActionListener(Event eventDetails, MonthView monthViewTable, WeekView weekViewTable, JFrame popup) {
         this.currentEvent = eventDetails; // Az esemény részletei, például a toString() által generált érték
         this.monthView = monthViewTable; // A havi nézet táblázata
         this.weekView = weekViewTable;  // A heti nézet táblázata
+        this.popup = popup;
     }
 
     @Override
@@ -30,7 +32,7 @@ public class DeleteEventActionListener implements ActionListener {
             weekView.refreshWeekTable();
             // Visszajelzés a felhasználónak
             JOptionPane.showMessageDialog(null, "Event deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-
+            popup.setVisible(false);
         }
     }
 }

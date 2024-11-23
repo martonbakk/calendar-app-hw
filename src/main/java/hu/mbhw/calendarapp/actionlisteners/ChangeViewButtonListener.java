@@ -2,7 +2,6 @@ package hu.mbhw.calendarapp.actionlisteners;
 
 import hu.mbhw.calendarapp.CalendarGraphics.CalendarFrame;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

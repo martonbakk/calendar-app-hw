@@ -16,13 +16,15 @@ public class EditEventActionListener implements ActionListener {
     private MonthView monthView;
     private WeekView weekView;
     public static boolean savedInput;
+    private JFrame popup;
 
     // Konstruktor: átveszi a módosítandó eseményt
-    public EditEventActionListener(Event eventToEdit, MonthView monthView, WeekView weekView) {
+    public EditEventActionListener(Event eventToEdit, MonthView monthView, WeekView weekView, JFrame popup) {
         this.eventToEdit = eventToEdit;
         this.monthView=monthView;
         this.weekView=weekView;
         this.savedInput=false;
+        this.popup=popup;
     }
 
     @Override
@@ -77,6 +79,7 @@ public class EditEventActionListener implements ActionListener {
                 JOptionPane.showMessageDialog(editFrame, "Event updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 editFrame.dispose();
                 savedInput=true;
+                popup.setVisible(false);
             } else {
                 savedInput=false;
                 JOptionPane.showMessageDialog(editFrame, "Invalid characters detected! Please correct the input.", "Error", JOptionPane.ERROR_MESSAGE);

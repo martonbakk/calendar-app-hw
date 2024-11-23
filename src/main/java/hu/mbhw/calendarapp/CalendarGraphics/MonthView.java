@@ -2,11 +2,13 @@ package hu.mbhw.calendarapp.CalendarGraphics;
 
 import hu.mbhw.calendarapp.data.Event;
 import hu.mbhw.calendarapp.data.DataHandler;
+import hu.mbhw.calendarapp.renderer.CurrentDayCellRenderer;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
 import java.awt.*;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,12 +23,15 @@ public class MonthView {
     private JList<String> eventList;
     private JTable monthTable;
     private DefaultTableModel monthTableModel;
+    private LocalDate localDate;
 
     public JTable getMonthTable(){
         return monthTable;
     }
 
-    public MonthView() {
+    public MonthView(LocalDate localDate) {
+        this.localDate=localDate;
+
         // Left panel setup
         leftPanel();
 
@@ -48,6 +53,12 @@ public class MonthView {
         // MONTH SELECTOR
         leftPanel = new JPanel(new BorderLayout());
         monthComboBox = new JComboBox<>(months);
+
+        //Set default
+        Month monthEnum= localDate.getMonth();
+        System.out.print(monthEnum);
+        monthComboBox.setSelectedItem(monthEnum.toString().charAt(0) +
+                monthEnum.toString().substring(1).toLowerCase());
 
         // Event list setup (alapértelmezett szűrés nélküli lista)
         eventList = EventList();  // Alapértelmezett értékek
@@ -72,6 +83,10 @@ public class MonthView {
         monthTable = new JTable(monthTableModel);
 
         monthTable.setRowHeight(45);
+        CurrentDayCellRenderer renderer = new CurrentDayCellRenderer(monthComboBox);
+        for (int col = 0; col < monthTable.getColumnCount(); col++) {
+            monthTable.getColumnModel().getColumn(col).setCellRenderer(renderer);
+        }
         rightPanel.add(new JScrollPane(monthTable), BorderLayout.CENTER);
     }
 
@@ -91,7 +106,10 @@ public class MonthView {
             }
         }
         monthTableModel.setDataVector(matrix, columnNames);
-
+        CurrentDayCellRenderer renderer = new CurrentDayCellRenderer(monthComboBox);
+        for (int col = 0; col < monthTable.getColumnCount(); col++) {
+            monthTable.getColumnModel().getColumn(col).setCellRenderer(renderer);
+        }
         leftPanel.revalidate();
         leftPanel.repaint();
     }

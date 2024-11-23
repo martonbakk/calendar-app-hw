@@ -121,4 +121,13 @@ public class DataHandler {
         }
         return null;
     }
+
+    public static boolean dateValidationToPreventConflicts(Event eventToCheck){
+        for(Event event: data){
+            if(eventToCheck.hourStart==event.hourStart&&eventToCheck.day==event.day&&eventToCheck.month.equals(event.month)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
