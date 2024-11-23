@@ -23,16 +23,12 @@ public class DataHandler {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(", ");
-                if (parts.length == 6) {
-                    String name = parts[0];
-                    String type = parts[1];
-                    String month = parts[2];
-                    int day = Integer.parseInt(parts[3]);
-                    int hour = Integer.parseInt(parts[4]);
-                    String details = parts[5].replace(";", ""); // Remove trailing semicolon
-                    events.add(new Event(name, type, month, day, hour, details));
+                Event event= createEventFromString(line);
+                if(event!=null){
+                    events.add(event);
                 }
+
+
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -82,7 +78,7 @@ public class DataHandler {
     }
 
     public static List<Event> getCurrentlyDisplayedEvents() {
-
+        sortCurrentlyDisplayedEvents();
         return currentlyDisplayedEvents;
     }
 
@@ -93,12 +89,36 @@ public class DataHandler {
             if (dayComparison != 0) {
                 return dayComparison;
             }
-            return Integer.compare(e1.hour, e2.hour);
+            return Integer.compare(e1.hourStart, e2.hourStart);
         });
     }
 
     public static void insertRecordIntoDatabase(Event event) {
         data.add(event);
+        currentlyDisplayedEvents.add(event);
         writeEventsToFile();
+    }
+
+    public static void deleteEventFromList(Event event){
+        data.remove(event);
+        currentlyDisplayedEvents.remove(event);
+        writeEventsToFile();
+    }
+
+    public static Event createEventFromString(String line){
+        String[] parts = line.split(", ");
+        if (parts.length == 8) {
+            String name = parts[0];
+            String type = parts[1];
+            String month = parts[2];
+            int day = Integer.parseInt(parts[3]);
+            int hourStart = Integer.parseInt(parts[4]);
+            int hourEnd = Integer.parseInt(parts[5]);
+            String place = parts[6];
+            String details = parts[7].replace(";", ""); // Remove trailing semicolon
+            System.out.println(name);
+            return new Event(name, type, month, day, hourStart, hourEnd, place, details);
+        }
+        return null;
     }
 }

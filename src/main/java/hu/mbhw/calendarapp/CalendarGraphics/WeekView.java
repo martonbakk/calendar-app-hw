@@ -2,6 +2,8 @@ package hu.mbhw.calendarapp.CalendarGraphics;
 
 import hu.mbhw.calendarapp.data.Event;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 import java.awt.*;
 import java.util.List;
 
@@ -16,6 +18,11 @@ public class WeekView {
     private int currentWeekStart; // Az aktuális hét hétfőjének dátuma
     private JTable weekTable; // A táblázat az eseményekkel
     private JScrollPane scrollPaneWeekTable;
+    private DefaultTableModel weekTableModel;
+
+    public JTable getWeekTable(){
+        return weekTable;
+    }
 
     public WeekView() {
         String[] columnNames = {"TIME", "H", "K", "Sz", "Cs", "P", "Szo", "V"}; // Az oszlopok nevei
@@ -37,9 +44,9 @@ public class WeekView {
         fillWeekMatrix(weekMatrix);
 
         // Létrehozzuk a táblázatot
-        weekTable = new JTable(weekMatrix, columnNames);
-        weekTable.setRowHeight(40); // Nagyobb sorok az olvashatóságért
-
+        weekTableModel = new DefaultTableModel(weekMatrix, columnNames);
+        weekTable = new JTable(weekTableModel);
+        weekTable.setRowHeight(40); // Olvashatóság
         scrollPaneWeekTable = new JScrollPane(weekTable);
         scrollPaneWeekTable.setPreferredSize(new Dimension(450, 220)); // Példa méret
         mainPanel.add(scrollPaneWeekTable, BorderLayout.CENTER);
@@ -114,7 +121,7 @@ public class WeekView {
         for (Event event : events) {
             int columnIndex = (event.day - currentWeekStart) + 1; // +1 az időintervallum oszlop miatt
             if (columnIndex >= 1 && columnIndex <= 7) { // Csak a hét napjaira írás
-                weekMatrix[event.hour - 1][columnIndex] = event.toString();
+                weekMatrix[event.hourStart][columnIndex] = event.toString();
             }
         }
     }
@@ -125,16 +132,15 @@ public class WeekView {
 
     // Frissíti a táblázat adatait
     public void refreshWeekTable() {
-        mainPanel.remove(scrollPaneWeekTable); // Előző táblázat eltávolítása
         String[][] weekMatrix = new String[24][8];
-        fillWeekMatrix(weekMatrix); // Újra kitöltjük a mátrixot
-        weekTable = new JTable(weekMatrix, new String[]{"TIME", "H", "K", "Sz", "Cs", "P", "Szo", "V"});
-        weekTable.setRowHeight(40); // Nagyobb sorok az olvashatóságért
-        scrollPaneWeekTable = new JScrollPane(weekTable);
-        scrollPaneWeekTable.setPreferredSize(new Dimension(450, 220));
-        mainPanel.add(scrollPaneWeekTable, BorderLayout.CENTER); // Új táblázat hozzáadása
-        mainPanel.revalidate(); // Panel frissítése
-        mainPanel.repaint();
+        fillWeekMatrix(weekMatrix); // Mátrix újratöltése
+
+        // A tábla modelljének frissítése
+        weekTableModel.setDataVector(weekMatrix, new String[]{"TIME", "H", "K", "Sz", "Cs", "P", "Szo", "V"});
+
+        // Ha szükséges, újrarendereljük a táblázatot
+        weekTable.revalidate();
+        weekTable.repaint();
     }
 
     public JPanel getPanel() {

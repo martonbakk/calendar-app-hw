@@ -1,11 +1,11 @@
-package hu.mbhw.calendarapp.main;
+package hu.mbhw.calendarapp.app;
 
 import hu.mbhw.calendarapp.CalendarGraphics.CalendarFrame;
 
 import static hu.mbhw.calendarapp.data.DataHandler.*;
 
 
-public class Main {
+public class App {
     public static void main(String[] args) {
         fileName="./src/main/resources/Data/data.txt";
         loadData();

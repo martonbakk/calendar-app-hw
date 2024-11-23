@@ -4,6 +4,7 @@ import hu.mbhw.calendarapp.data.Event;
 import hu.mbhw.calendarapp.data.DataHandler;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import java.awt.*;
 import java.util.ArrayList;
@@ -18,9 +19,12 @@ public class MonthView {
     private JPanel mainPanel;
     private JComboBox<String> monthComboBox;
     private JList<String> eventList;
+    private JTable monthTable;
+    private DefaultTableModel monthTableModel;
 
-
-    JTable monthTable;
+    public JTable getMonthTable(){
+        return monthTable;
+    }
 
     public MonthView() {
         // Left panel setup
@@ -64,9 +68,10 @@ public class MonthView {
             matrix[i][j]= matrix[i][j]+ " ("+event.name+")";
         }
         rightPanel = new JPanel(new BorderLayout());
-        monthTable = new JTable(matrix, columnNames);
+        monthTableModel = new DefaultTableModel(matrix, columnNames);
+        monthTable = new JTable(monthTableModel);
+
         monthTable.setRowHeight(45);
-        monthTable.setDefaultEditor(Object.class, new InteractiveCellEditor());
         rightPanel.add(new JScrollPane(monthTable), BorderLayout.CENTER);
     }
 
@@ -85,11 +90,8 @@ public class MonthView {
                 matrix[i][j]= matrix[i][j]+ " ("+event.name+")";
             }
         }
-        monthTable=new JTable(matrix, columnNames);
-        monthTable.setRowHeight(45);
-        monthTable.setDefaultEditor(Object.class, new InteractiveCellEditor());
-        rightPanel.removeAll();
-        rightPanel.add(new JScrollPane(monthTable), BorderLayout.CENTER);
+        monthTableModel.setDataVector(matrix, columnNames);
+
         leftPanel.revalidate();
         leftPanel.repaint();
     }
@@ -112,39 +114,10 @@ public class MonthView {
         List<String> filteredEvents = new ArrayList<>();
         int num=1;
         for (Event event : cr) {
-            filteredEvents.add(num+ ") "+event.name+":  "+event.month+"-"+event.day+"-"+event.hour+":00");
+            filteredEvents.add(num+ ") "+event.name+":  "+event.month+"-"+event.day+"-"+event.hourStart+":00 "+event.place);
             num++;
         }
         return new JList<>(filteredEvents.toArray(new String[0]));
-    }
-}
-
-// Egyedi cellaeditor, ami kattintásra egy új ablakot jelenít meg
-class InteractiveCellEditor extends AbstractCellEditor implements TableCellEditor {
-    private JButton button;
-    private Object currentValue;
-
-    public InteractiveCellEditor() {
-        button = new JButton("X");
-        button.addActionListener(e -> {
-            // Új ablak megjelenítése kattintáskor
-            JFrame popup = new JFrame("Cell Details");
-            popup.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            popup.setSize(200, 100);
-            popup.add(new JLabel("Value: " + currentValue), BorderLayout.CENTER);
-            popup.setVisible(true);
-        });
-    }
-
-    @Override
-    public Object getCellEditorValue() {
-        return currentValue;
-    }
-
-    @Override
-    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        currentValue = value; // Az aktuális cella értékének mentése
-        return button; // Gombként jelenítjük meg a cellát
     }
 }
 
