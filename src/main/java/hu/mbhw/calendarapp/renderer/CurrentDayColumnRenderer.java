@@ -3,26 +3,51 @@ package hu.mbhw.calendarapp.renderer;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
-import java.time.LocalDate;
 
+/**
+ * The CurrentDayColumnRenderer class highlights the entire column of the current day in a JTable.
+ * It extends DefaultTableCellRenderer to customize the rendering for a specific column.
+ */
 public class CurrentDayColumnRenderer extends DefaultTableCellRenderer {
+
+    // The index of the column that represents the current day.
     private final int currentDayColumn;
 
+    /**
+     * Constructor to initialize the CurrentDayColumnRenderer with the target column.
+     *
+     * @param currentDayColumn - The index of the column representing the current day.
+     */
     public CurrentDayColumnRenderer(int currentDayColumn) {
-        this.currentDayColumn = currentDayColumn; // Az oszlop indexe, ami az aktuális napot reprezentálja
+        this.currentDayColumn = currentDayColumn;
     }
 
+    /**
+     * Overrides the getTableCellRendererComponent method to customize the rendering of table cells.
+     * Highlights the column corresponding to the current day with a red background.
+     *
+     * @param table - The JTable being rendered.
+     * @param value - The value of the cell being rendered.
+     * @param isSelected - Whether the cell is selected.
+     * @param hasFocus - Whether the cell has focus.
+     * @param row - The row index of the cell.
+     * @param column - The column index of the cell.
+     * @return The rendered cell component.
+     */
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+        // Get the default rendering component for the cell.
         Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-        // Ellenőrizzük, hogy az aktuális nap oszlopában vagyunk-e
+        // Check if the current cell is in the column representing the current day.
         if (column == currentDayColumn && !isSelected) {
-            cell.setBackground(Color.RED); // Az aktuális nap színe
+            // Set the background color to red for the current day column.
+            cell.setBackground(Color.RED);
         } else {
-            cell.setBackground(Color.WHITE); // Egyéb cellák alapértelmezett színe
+            // Set the background color to white for other columns.
+            cell.setBackground(Color.WHITE);
         }
 
-        return cell;
+        return cell; // Return the customized cell component.
     }
 }

@@ -2,12 +2,28 @@ package hu.mbhw.calendarapp.data;
 
 import java.util.regex.Pattern;
 
+/**
+ * The StringValidator class provides utilities for validating strings
+ * to ensure they do not contain forbidden characters.
+ */
 public class StringValidator {
+
+    /**
+     * Checks if the given string contains any invalid characters.
+     * Invalid characters are defined as ',' (comma) and ';' (semicolon).
+     *
+     * @param input - The string to validate.
+     * @return True if the string does NOT contain invalid characters, false otherwise.
+     */
     public static boolean containsInvalidCharacters(String input) {
-        // Regex a megengedett karakterekre
+        // Define a regular expression pattern for forbidden characters.
         String forbiddenChars = "[,;]";
+
+        // Compile the pattern.
         Pattern pattern = Pattern.compile(forbiddenChars);
-        // Ha NEM talál tiltott karaktereket, igazat ad vissza
+
+        // Check if the input string contains any forbidden characters.
+        // If no forbidden characters are found, return true (string is valid).
         return !pattern.matcher(input).find();
     }
 }
