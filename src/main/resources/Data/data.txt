@@ -20,7 +20,6 @@ Summer Picnic, Home, July, 9, 12, 14, Backyard, Picnic with family and friends i
 Craft Fair, Other, August, 15, 18, 20, Community Hall, Handmade crafts on sale at the community hall.;
 Volunteer Day, Other, September, 7, 14, 17, Park, Cleaning up the park for a community event.;
 Weekend Getaway, Home, October, 21, 5, 8, Beach Resort, Short trip to a nearby beach resort.;
-Gaming Night, Other, November, 26, 20, 22, Friend's House, Playing board games at a friend's house.;
 Safety Training, Work, December, 10, 11, 13, Office, Workplace safety drills for all employees.;
 Tech Talk, Work, February, 4, 9, 11, Office, Presentation on the latest industry trends.;
 Book Signing, Other, March, 11, 16, 18, Bookstore, Meet-and-greet with an author at the bookstore.;
@@ -30,7 +29,6 @@ Dance Class, Other, June, 19, 13, 15, Dance Studio, Salsa dancing lessons at a l
 Wine Tasting, Other, July, 29, 19, 21, Vineyard, Sampling wines at a nearby vineyard.;
 Charity Auction, Other, September, 25, 18, 20, Town Hall, Fundraising auction at the town hall.;
 Autumn Retreat, Home, October, 12, 6, 8, Mountain Cabin, Weekend retreat in a mountain cabin.;
-Karaoke Night, Other, November, 14, 20, 22, Local Bar, Singing competition at a local bar.;
 Client Presentation, Work, December, 17, 9, 11, Office, Pitching a new idea to clients at the office.;
 Hackathon, Work, February, 20, 8, 10, Office, Coding competition for tech enthusiasts.;
 Theater Night, Other, March, 8, 19, 21, City Theater, Watching a classic play at the city theater.;
@@ -40,7 +38,6 @@ River Rafting, Other, July, 7, 10, 12, River, Adventure trip with friends at the
 Holiday Brunch, Home, August, 26, 12, 14, Home, Family brunch to celebrate the long weekend.;
 Food Festival, Other, September, 9, 17, 19, Town Square, Street food and local delicacies at the town square.;
 Nature Walk, Home, October, 13, 7, 9, Forest, Morning walk through a scenic forest trail.;
-Comedy Night, Other, November, 5, 19, 21, Local Venue, Stand-up comedy show at a local venue.;
 Team Building, Work, December, 15, 11, 13, Park, Outdoor activities for better team collaboration.;
 Research Conference, Work, February, 18, 9, 11, Conference Room, Presenting research findings at the annual conference.;
 City Tour, Other, March, 24, 13, 15, City, Exploring historical landmarks in the city.;
@@ -48,10 +45,8 @@ New Year's Celebration, Home, April, 1, 20, 22, Home, Welcoming the new year wit
 Training Workshop, Work, May, 30, 8, 10, Office, Skill enhancement session for employees.;
 Music Performance, Other, June, 2, 19, 21, Cultural Center, Violin recital at the cultural center.;
 Sports Tournament, Other, July, 15, 10, 12, Stadium, Local football competition at the stadium.;
-Farm Visit, Home, August, 10, 7, 9, Countryside, Exploring a countryside farm with family.;
 School Reunion, Other, September, 21, 12, 14, School, Catching up with old classmates.;
 Cycling Event, Other, October, 16, 9, 11, Town, Community cycling event through the town.;
-Outdoor Concert, Other, November, 3, 18, 20, Open-Air Venue, Live music show at the open-air venue.;
 Budget Review, Work, December, 20, 8, 10, Office, Annual financial planning meeting at the office.;
 Coding Bootcamp, Work, February, 9, 12, 14, Office, Intensive coding session for employees.;
 Fashion Show, Other, March, 13, 18, 20, Fashion Studio, Local designer collections on display.;
@@ -68,7 +63,6 @@ Local Parade, Other, March, 30, 11, 13, Main Street, Watching the annual town pa
 Farmers' Market, Other, April, 23, 9, 11, Downtown, Shopping for fresh produce at the farmers' market.;
 Fashion Workshop, Other, May, 2, 18, 20, Fashion Studio, Learning fashion design skills at a local studio.;
 Outdoor Movie Night, Other, June, 8, 20, 22, Park, Watching a film under the stars at the park.;
-Innovation Workshop, Work, November, 12, 9, 11, Work, Brainstorming new ideas for the company.;
 Housewarming Party, Home, December, 26, 15, 17, Home, Celebrating a new home with friends and family.;
 Annual Banquet, Work, February, 22, 10, 12, Work, Formal dinner with the team.;
 Camping Trip, Other, March, 10, 14, 16, National Park, Overnight stay at a national park.;
@@ -78,8 +72,6 @@ New Employee Onboarding, Work, June, 4, 11, 13, Office, Introducing new hires to
 Outdoor Yoga, Other, July, 16, 8, 10, Park, Relaxing yoga session in a park.;
 Photography Walk, Other, August, 14, 13, 15, City, Exploring the city and capturing street photos.;
 Flower Festival, Other, September, 1, 18, 20, Garden, Celebrating spring blooms at the garden.;
-Potluck Lunch, Home, October, 30, 12, 14, Home, Sharing homemade dishes with friends.;
-Tech Meetup, Work, November, 25, 14, 16, Office, Discussing the latest trends in technology.;
 Dance Performance, Other, December, 7, 17, 19, Theater, Watching a ballet show at the theater.;
 Project Review, Work, February, 11, 9, 11, Office, Discussing progress and updates on a project.;
 Open Mic Night, Other, March, 23, 19, 21, Cafe, Sharing talents at a local cafe.;
@@ -88,3 +80,9 @@ Brainstorming Session, Work, May, 9, 12, 14, Office, Team discussion on upcoming
 Reading Club, Other, January, 31, 19, 21, Community Library, Discussing books at the community library.;
 Teszt2, Home, January, 2, 13, 14, ads, teszt;
 asd, Home, January, 12, 13, 14, asd, asd;
+Tech Meetup, Work, November, 25, 14, 16, Office, Discussing the latest trends in technology.;
+Indoor Concert, Other, November, 3, 18, 20, Open-Air Venue, Live music show at the open-air venue.;
+Farm Visit, Home, August, 10, 7, 9, Countryside, Exploring a countryside farm with family.;
+Name, Home, November, 2, 13, 14, Place, This is a test;
+edited Title, Home, November, 2, 1, 3, , edited Details;
+Namee, Home, November, 2, 12, 13, Miskolc, Tesztelek;
