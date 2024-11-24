@@ -1,9 +1,8 @@
 package hu.mbhw.calendarapp.app;
 
 import hu.mbhw.calendarapp.CalendarGraphics.CalendarFrame;
-import static hu.mbhw.calendarapp.data.DataHandler.*;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import static hu.mbhw.calendarapp.data.DataHandler.*;
 
 public class App {
     public static void main(String[] args) {

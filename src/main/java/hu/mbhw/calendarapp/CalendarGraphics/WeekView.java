@@ -6,10 +6,9 @@ import hu.mbhw.calendarapp.renderer.CurrentDayColumnRenderer;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
 import java.awt.*;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.Month;
 import java.util.List;
 
 import static hu.mbhw.calendarapp.data.DataHandler.getCurrentlyDisplayedEvents;
@@ -25,16 +24,18 @@ public class WeekView {
     private JScrollPane scrollPaneWeekTable;
     private DefaultTableModel weekTableModel;
     private LocalDate localDate;
+    private JComboBox<String> monthComboBox;
 
     public JTable getWeekTable(){
         return weekTable;
     }
 
-    public WeekView(LocalDate localDate) {
+    public WeekView(LocalDate localDate, JComboBox<String> monthComboBox) {
         String[] columnNames = {"TIME", "H", "K", "Sz", "Cs", "P", "Szo", "V"}; // Az oszlopok nevei
         String[][] weekMatrix = new String[24][8]; // A hét mátrix (nap, 2 órás intervallumok)
 
         this.localDate=localDate;
+        this.monthComboBox=monthComboBox;
 
         currentWeekStart = 1; // Az aktuális hét hétfője
         weekLabel = new JLabel(); // Címke a hét napjainak kijelzésére
@@ -144,7 +145,10 @@ public class WeekView {
         // A tábla modelljének frissítése
         weekTableModel.setDataVector(weekMatrix, new String[]{"TIME", "H", "K", "Sz", "Cs", "P", "Szo", "V"});
 
-        if(currentWeekStart <= localDate.getDayOfMonth() && localDate.getDayOfMonth() < (currentWeekStart + 7)){
+        Month monthEnum= localDate.getMonth();
+        if(currentWeekStart <= localDate.getDayOfMonth() && localDate.getDayOfMonth() < (currentWeekStart + 7)&&
+                monthComboBox.getSelectedItem().toString().contains(monthEnum.toString().charAt(0) +
+                monthEnum.toString().substring(1).toLowerCase())){
             int currentDayColumn = localDate.getDayOfMonth()%7;
             for (int i = 1; i <= 7; i++) { // Csak a napokat reprezentáló oszlopokra alkalmazzuk
                 if (i == currentDayColumn) {

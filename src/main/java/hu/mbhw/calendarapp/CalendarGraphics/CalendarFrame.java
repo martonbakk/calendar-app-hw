@@ -28,9 +28,9 @@ public class CalendarFrame extends JFrame {
         // MenuBar setup
         menuBar = new MenuBar();
 
-        // Initialize views
+        // Initialize views and dialogs
         monthView = new MonthView(localDate);
-        weekView = new WeekView(localDate);
+        weekView = new WeekView(localDate, monthView.getMonthComboBox());
 
         // Lower panel setup
         lowPanel = new JPanel(new BorderLayout());
