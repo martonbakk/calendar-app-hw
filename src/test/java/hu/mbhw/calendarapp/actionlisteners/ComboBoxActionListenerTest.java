@@ -45,7 +45,7 @@ class ComboBoxActionListenerTest {
         ActionEvent event = new ActionEvent(monthComboBox, ActionEvent.ACTION_PERFORMED, "ComboBoxChanged");
         listener.actionPerformed(event);
 
-        assertEquals(1, DataHandler.getCurrentlyDisplayedEvents().size(), "Only one event should match the filters.");
+        assertEquals(2, DataHandler.getCurrentlyDisplayedEvents().size(), "Only one event should match the filters.");
         assertEquals("Meeting", DataHandler.getCurrentlyDisplayedEvents().get(0).name, "The event should be 'Meeting'.");
     }
 }

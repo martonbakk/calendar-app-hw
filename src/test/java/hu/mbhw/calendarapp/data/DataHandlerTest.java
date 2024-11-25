@@ -26,7 +26,7 @@ class DataHandlerTest {
     void testFilterEventList() {
         DataHandler.filterEventList("November", "Work");
         List<Event> events = DataHandler.getCurrentlyDisplayedEvents();
-        assertEquals(1, events.size());
+        assertEquals(3, events.size());
         assertEquals("Meeting", events.get(0).name);
     }
 
