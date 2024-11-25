@@ -73,7 +73,11 @@ This project includes basic test cases to verify key functionalities.
 
 1. Run the tests using your IDE or:
    ```bash
-   ./gradlew test
+   mvn verify
+   ```
+2. Build the project:
+   ```bash
+   mvn compile
    ```
 
 ## Technologies Used
@@ -81,6 +85,7 @@ This project includes basic test cases to verify key functionalities.
 - **Java**: Core programming language.
 - **Swing**: For building the graphical user interface.
 - **JUnit**: For unit testing.
+- **Maven**: For building and veryfing tests.
 
 ## Contributing
 
