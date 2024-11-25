@@ -9,19 +9,6 @@ import java.awt.*;
  * It extends DefaultTableCellRenderer to customize the rendering for a specific column.
  */
 public class CurrentDayColumnRenderer extends DefaultTableCellRenderer {
-
-    // The index of the column that represents the current day.
-    private final int currentDayColumn;
-
-    /**
-     * Constructor to initialize the CurrentDayColumnRenderer with the target column.
-     *
-     * @param currentDayColumn - The index of the column representing the current day.
-     */
-    public CurrentDayColumnRenderer(int currentDayColumn) {
-        this.currentDayColumn = currentDayColumn;
-    }
-
     /**
      * Overrides the getTableCellRendererComponent method to customize the rendering of table cells.
      * Highlights the column corresponding to the current day with a red background.
@@ -40,7 +27,7 @@ public class CurrentDayColumnRenderer extends DefaultTableCellRenderer {
         Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
         // Check if the current cell is in the column representing the current day.
-        if (column == currentDayColumn && !isSelected) {
+        if (!isSelected) {
             // Set the background color to red for the current day column.
             cell.setBackground(Color.RED);
         } else {

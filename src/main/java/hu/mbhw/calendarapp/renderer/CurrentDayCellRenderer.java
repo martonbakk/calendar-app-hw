@@ -49,7 +49,7 @@ public class CurrentDayCellRenderer extends DefaultTableCellRenderer {
         if (value != null) {
             String cellValue = value.toString();
             try {
-                // Assume the cell contains a day value as the first part of the string.
+                // The cell contains a day value as the first part of the string.
                 int day = Integer.parseInt(cellValue.split(" ")[0]);
 
                 // Check if the day matches the current day and the selected month matches today's month.

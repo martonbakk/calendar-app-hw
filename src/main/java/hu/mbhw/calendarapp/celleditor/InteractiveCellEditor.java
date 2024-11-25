@@ -1,4 +1,4 @@
-package hu.mbhw.calendarapp.renderer;
+package hu.mbhw.calendarapp.celleditor;
 
 import hu.mbhw.calendarapp.CalendarGraphics.*;
 import hu.mbhw.calendarapp.data.DataHandler;
@@ -48,7 +48,7 @@ public class InteractiveCellEditor extends AbstractCellEditor implements TableCe
             // Parse the current event from the cell value.
             Event currentEvent = DataHandler.createEventFromString(currentValue.toString());
 
-            if (currentView == Enums.CALENDARFRAME_VIEW.WEEK && currentEvent != null) {
+            if (currentView == CalendarFrame.CALENDARFRAME_VIEW.WEEK && currentEvent != null) {
                 // "Edit" button to modify the event.
                 JButton editButton = new JButton("Edit");
                 editButton.addActionListener(e1 -> {
@@ -56,7 +56,7 @@ public class InteractiveCellEditor extends AbstractCellEditor implements TableCe
                     JFrame popup2 = new JFrame("Event Details");
                     popup2.setResizable(false);
                     popup2.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                    popup2.setBounds(100, 100, 250, 350);
+                    popup2.setBounds(100, 100, 250, 300);
 
                     JPanel detailsPanel = new JPanel();
                     detailsPanel.setLayout(new BoxLayout(detailsPanel, BoxLayout.Y_AXIS)); // Vertical layout.
@@ -91,6 +91,13 @@ public class InteractiveCellEditor extends AbstractCellEditor implements TableCe
                     eventTitlePanel.add(eventTitleGiven);
                     detailsPanel.add(eventTitlePanel);
 
+                    JPanel eventPlacePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+                    JLabel eventPlaceLabel = new JLabel("Event take palce:");
+                    JTextField eventPlaceGiven = new JTextField(currentEvent.place, 20);
+                    eventPlacePanel.add(eventPlaceLabel);
+                    eventPlacePanel.add(eventPlaceGiven);
+                    detailsPanel.add(eventPlacePanel);
+
                     JPanel eventDetailsPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
                     JLabel eventDetailsLabel = new JLabel("Event details:");
                     JTextField eventDetailsGiven = new JTextField(currentEvent.details, 20);
@@ -103,10 +110,11 @@ public class InteractiveCellEditor extends AbstractCellEditor implements TableCe
                     JButton saveButton = new JButton("Save");
                     saveButton.addActionListener(e2 -> {
                         // Validate input before saving changes.
-                        if (StringValidator.containsInvalidCharacters(eventDetailsGiven.getText() + " " + eventTitleGiven.getText())) {
+                        if (StringValidator.containsInvalidCharacters(eventDetailsGiven.getText() + " " + eventTitleGiven.getText()+" "+eventPlaceGiven.getText())) {
                             DataHandler.deleteEventFromList(currentEvent); // Remove the old event.
                             currentEvent.details = eventDetailsGiven.getText();
                             currentEvent.name = eventTitleGiven.getText();
+                            currentEvent.place = eventPlaceGiven.getText();
                             DataHandler.insertRecordIntoDatabase(currentEvent); // Save updated event.
 
                             JOptionPane.showMessageDialog(null, "The event has been successfully edited!",

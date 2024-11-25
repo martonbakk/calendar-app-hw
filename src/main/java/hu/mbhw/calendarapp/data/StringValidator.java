@@ -24,6 +24,11 @@ public class StringValidator {
 
         // Check if the input string contains any forbidden characters.
         // If no forbidden characters are found, return true (string is valid).
+        /*
+        * The find() method searches the input string for any sequence of characters that match the regex [;,].
+        * If it finds any matches (e.g., the input contains , or ;), it returns true.
+        * If no matches are found, it returns false
+        */
         return !pattern.matcher(input).find();
     }
 }

@@ -142,9 +142,15 @@ public class DataHandler {
      */
     private static void sortCurrentlyDisplayedEvents() {
         currentlyDisplayedEvents.sort((e1, e2) -> {
+            /*
+            * Int.Comparison:
+            * 0: If e1.day is equal to e2.day.
+            * Negative value: If e1.day is less than e2.day (e.g., -1 if e1.day < e2.day).
+            * Positive value: If e1.day is greater than e2.day (e.g., 1 if e1.day > e2.day).
+             */
             int dayComparison = Integer.compare(e1.day, e2.day); // Compare by day.
             if (dayComparison != 0) {
-                return dayComparison; // Return the day comparison if not equal.
+                return dayComparison; // Return the day comparison if not equal. minus means false plus means true
             }
             return Integer.compare(e1.hourStart, e2.hourStart); // Compare by hour if days are equal.
         });

@@ -19,9 +19,6 @@ import static hu.mbhw.calendarapp.data.DataHandler.getCurrentlyDisplayedEvents;
  */
 public class WeekView {
 
-    // List of events to be displayed.
-    private List<Event> data;
-
     // Main panel containing all components of the WeekView.
     private JPanel mainPanel;
 
@@ -174,6 +171,10 @@ public class WeekView {
         }
 
         // Populate the matrix with event data.
+        /*
+         * We insert the events to the matrix by the start hour. If the event is longer/shorter than on hour
+         * the app cant visualize it.
+         */
         List<Event> events = getCurrentlyDisplayedEvents();
         for (Event event : events) {
             int columnIndex = (event.day - currentWeekStart) + 1; // +1 for time column.
@@ -198,14 +199,20 @@ public class WeekView {
 
         // Highlight the current day if it falls within the displayed week.
         Month monthEnum = localDate.getMonth();
+        /*
+         * We use the localDate to get the current date, then we check if we are in the good week
+         * and the month comboBox selected item is equals to the current month
+         */
         if (currentWeekStart <= localDate.getDayOfMonth() && localDate.getDayOfMonth() < (currentWeekStart + 7) &&
                 monthComboBox.getSelectedItem().toString().contains(monthEnum.toString().charAt(0) +
                         monthEnum.toString().substring(1).toLowerCase())) {
             int currentDayColumn = localDate.getDayOfMonth() % 7;
             for (int i = 1; i <= 7; i++) {
                 if (i == currentDayColumn) {
-                    weekTable.getColumnModel().getColumn(i).setCellRenderer(new CurrentDayColumnRenderer(i));
+                    //we set the backgroung red
+                    weekTable.getColumnModel().getColumn(i).setCellRenderer(new CurrentDayColumnRenderer());
                 } else {
+                    //Otherwise set white bg
                     weekTable.getColumnModel().getColumn(i).setCellRenderer(new DefaultTableCellRenderer());
                 }
             }

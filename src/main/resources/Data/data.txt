@@ -81,8 +81,8 @@ Reading Club, Other, January, 31, 19, 21, Community Library, Discussing books at
 Teszt2, Home, January, 2, 13, 14, ads, teszt;
 asd, Home, January, 12, 13, 14, asd, asd;
 Tech Meetup, Work, November, 25, 14, 16, Office, Discussing the latest trends in technology.;
-Indoor Concert, Other, November, 3, 18, 20, Open-Air Venue, Live music show at the open-air venue.;
 Farm Visit, Home, August, 10, 7, 9, Countryside, Exploring a countryside farm with family.;
 Name, Home, November, 2, 13, 14, Place, This is a test;
-edited Title, Home, November, 2, 1, 3, , edited Details;
 Namee, Home, November, 2, 12, 13, Miskolc, Tesztelek;
+Indoor Concert2, Other, November, 3, 18, 20, Open-Air Venue, Live music show at the open-air venue.;
+edited Title, Home, November, 2, 1, 3, Here, edited Details;

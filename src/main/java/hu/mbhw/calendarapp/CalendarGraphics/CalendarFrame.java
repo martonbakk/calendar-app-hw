@@ -1,7 +1,7 @@
 package hu.mbhw.calendarapp.CalendarGraphics;
 
 import hu.mbhw.calendarapp.actionlisteners.*;
-import hu.mbhw.calendarapp.renderer.InteractiveCellEditor;
+import hu.mbhw.calendarapp.celleditor.InteractiveCellEditor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,8 +33,11 @@ public class CalendarFrame extends JFrame {
     private InteractiveCellEditor interactiveCellEditor;
 
     // Tracks the current view of the frame (MONTH or WEEK).
-    public static Enums.CALENDARFRAME_VIEW currentView = Enums.CALENDARFRAME_VIEW.MONTH;
+    public static CALENDARFRAME_VIEW currentView = CALENDARFRAME_VIEW.MONTH;
 
+    public static enum CALENDARFRAME_VIEW {
+        MONTH, WEEK
+    }
     /**
      * Constructor for the CalendarFrame.
      * Initializes the frame, sets up the menu bar, views, and listeners.
@@ -110,7 +113,9 @@ public class CalendarFrame extends JFrame {
      */
     private void addButtonListener() {
         // Attach a listener to toggle the view between MonthView and WeekView.
-        menuBar.getViewButton().addActionListener(new ChangeViewButtonListener(this));
+        menuBar.getViewButton().addActionListener(e->{
+            this.toggleView();
+        });
 
         // Attach a listener to open the Add Event dialog.
         menuBar.getAddEventButton().addActionListener(new AddEventButtonListener(menuBar, monthView, weekView));
@@ -124,15 +129,15 @@ public class CalendarFrame extends JFrame {
         lowPanel.remove(currentLowPanel);
         System.out.println("SWITCH VIEW: " + currentView.name());
 
-        if (currentView == Enums.CALENDARFRAME_VIEW.MONTH) {
+        if (currentView == CalendarFrame.CALENDARFRAME_VIEW.MONTH) {
             // Switch to WeekView.
-            currentView = Enums.CALENDARFRAME_VIEW.WEEK;
+            currentView = CalendarFrame.CALENDARFRAME_VIEW.WEEK;
             currentLowPanel = new JPanel();
             weekView.updateWeekTable(); // Update the WeekView data.
             currentLowPanel.add(weekView.getPanel(), BorderLayout.CENTER);
         } else {
             // Switch to MonthView.
-            currentView = Enums.CALENDARFRAME_VIEW.MONTH;
+            currentView = CalendarFrame.CALENDARFRAME_VIEW.MONTH;
             monthView.updateEventList();   // Update the event list.
             monthView.updateEventMatrix(); // Update the event matrix.
             currentLowPanel = new JPanel(new BorderLayout());
