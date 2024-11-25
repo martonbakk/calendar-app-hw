@@ -1,4 +1,5 @@
-package hu.mbhw.calendarapp.tests;
+package hu.mbhw.calendarapp.CalendarGraphics;
+
 
 import hu.mbhw.calendarapp.CalendarGraphics.MenuBar;
 import org.junit.jupiter.api.*;

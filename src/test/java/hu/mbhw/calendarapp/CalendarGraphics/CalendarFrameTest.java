@@ -1,6 +1,5 @@
-package hu.mbhw.calendarapp.tests;
+package hu.mbhw.calendarapp.CalendarGraphics;
 
-import hu.mbhw.calendarapp.CalendarGraphics.CalendarFrame;
 import org.junit.jupiter.api.*;
 
 import java.time.LocalDate;

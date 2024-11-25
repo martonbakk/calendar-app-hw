@@ -1,4 +1,4 @@
-package hu.mbhw.calendarapp.tests;
+package hu.mbhw.calendarapp.data;
 
 import hu.mbhw.calendarapp.data.StringValidator;
 import org.junit.jupiter.api.*;

@@ -1,7 +1,5 @@
-package hu.mbhw.calendarapp.tests;
+package hu.mbhw.calendarapp.data;
 
-import hu.mbhw.calendarapp.data.DataHandler;
-import hu.mbhw.calendarapp.data.Event;
 import org.junit.jupiter.api.*;
 
 import java.time.LocalDate;

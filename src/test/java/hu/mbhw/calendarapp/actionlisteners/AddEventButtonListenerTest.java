@@ -1,9 +1,8 @@
-package hu.mbhw.calendarapp.tests;
+package hu.mbhw.calendarapp.actionlisteners;
 
 import hu.mbhw.calendarapp.CalendarGraphics.MenuBar;
 import hu.mbhw.calendarapp.CalendarGraphics.MonthView;
 import hu.mbhw.calendarapp.CalendarGraphics.WeekView;
-import hu.mbhw.calendarapp.actionlisteners.AddEventButtonListener;
 import hu.mbhw.calendarapp.data.DataHandler;
 import hu.mbhw.calendarapp.data.Event;
 import org.junit.jupiter.api.*;
