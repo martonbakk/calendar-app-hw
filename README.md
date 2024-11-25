@@ -12,6 +12,13 @@ A **Java-based calendar application** designed for managing events. This project
 - **Customizable Views**: Switch between monthly and weekly calendar views.
 - **Event Filtering**: Filter events based on the month and type (e.g., Home, Work, Other).
 
+## Run the code
+
+ Build the project:
+   ```bash
+   mvn compile
+   ```
+
 ## Project Structure
 
 ```
@@ -74,10 +81,6 @@ This project includes basic test cases to verify key functionalities.
 1. Run the tests using your IDE or:
    ```bash
    mvn verify
-   ```
-2. Build the project:
-   ```bash
-   mvn compile
    ```
 
 ## Technologies Used
