@@ -49,7 +49,7 @@ src/
    Import the project into your favorite Java IDE (e.g., IntelliJ IDEA, Eclipse).
 
 3. **Build the project**:
-   Ensure you have JDK 11 or higher installed. Configure your IDE to use the correct JDK version.
+   Ensure you have MVN and JDK 11 or higher installed. Configure your IDE to use the correct JDK version.
 
 4. **Run the application**:
    Run the `App` class located in `hu.mbhw.calendarapp.app`.
